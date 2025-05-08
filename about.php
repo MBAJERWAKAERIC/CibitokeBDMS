@@ -7,11 +7,11 @@ include('includes/config.php');
 <html lang="zxx">
 
 <head>
-	<title>Blood Bank Donar Management System | About Us </title>
+	<title>Cibitoke Blood Donar Management System | About Us </title>
 	<!-- Meta tag Keywords -->
-	
+
 	<script>
-		addEventListener("load", function () {
+		addEventListener("load", function() {
 			setTimeout(hideURLbar, 0);
 		}, false);
 
@@ -32,15 +32,15 @@ include('includes/config.php');
 
 	<!-- Web-Fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
-	    rel="stylesheet">
+		rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
-	    rel="stylesheet">
+		rel="stylesheet">
 	<!-- //Web-Fonts -->
 
 </head>
 
 <body>
-	<?php include('includes/header.php');?>
+	<?php include('includes/header.php'); ?>
 
 	<!-- banner 2 -->
 	<div class="inner-banner-w3ls">
@@ -65,34 +65,33 @@ include('includes/config.php');
 	<!-- about -->
 	<section class="about py-5">
 		<div class="container py-xl-5 py-lg-3">
-			<?php 
-$pagetype="aboutus";
-$sql = "SELECT type,detail,PageName from tblpages where type=:pagetype";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':pagetype',$pagetype,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{ ?>
-			<div class="w3ls-titles text-center mb-md-5 mb-4">
-				<h3 class="title"><?php   echo htmlentities($result->PageName); ?></h3>
-				<span>
-					<i class="fas fa-user-md"></i>
-				</span>
-			</div>
-			<p class="aboutpara text-center mx-auto"><?php  echo $result->detail; ?>.</p>
-<?php } } ?>
-			
+			<?php
+			$pagetype = "aboutus";
+			$sql = "SELECT type,detail,PageName from tblpages where type=:pagetype";
+			$query = $dbh->prepare($sql);
+			$query->bindParam(':pagetype', $pagetype, PDO::PARAM_STR);
+			$query->execute();
+			$results = $query->fetchAll(PDO::FETCH_OBJ);
+			$cnt = 1;
+			if ($query->rowCount() > 0) {
+				foreach ($results as $result) { ?>
+					<div class="w3ls-titles text-center mb-md-5 mb-4">
+						<h3 class="title"><?php echo htmlentities($result->PageName); ?></h3>
+						<span>
+							<i class="fas fa-user-md"></i>
+						</span>
+					</div>
+					<p class="aboutpara text-center mx-auto"><?php echo $result->detail; ?>.</p>
+			<?php }
+			} ?>
+
 		</div>
 	</section>
 	<!-- //about -->
 
 
 
-	<?php include('includes/footer.php');?>
+	<?php include('includes/footer.php'); ?>
 
 
 	<!-- Js files -->
@@ -103,17 +102,17 @@ foreach($results as $result)
 	<!-- banner slider -->
 	<script src="js/responsiveslides.min.js"></script>
 	<script>
-		$(function () {
+		$(function() {
 			$("#slider4").responsiveSlides({
 				auto: true,
 				pager: true,
 				nav: true,
 				speed: 1000,
 				namespace: "callbacks",
-				before: function () {
+				before: function() {
 					$('.events').append("<li>before event fired.</li>");
 				},
-				after: function () {
+				after: function() {
 					$('.events').append("<li>after event fired.</li>");
 				}
 			});
