@@ -1,26 +1,22 @@
 <?php
 session_start();
 include('includes/config.php');
-if(isset($_POST['login']))
-{
-$username=$_POST['username'];
-$password=md5($_POST['password']);
-$sql ="SELECT UserName,Password FROM tbladmin WHERE UserName=:username and Password=:password";
-$query= $dbh -> prepare($sql);
-$query-> bindParam(':username', $username, PDO::PARAM_STR);
-$query-> bindParam(':password', $password, PDO::PARAM_STR);
-$query-> execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-if($query->rowCount() > 0)
-{
-$_SESSION['alogin']=$_POST['username'];
-echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
-} else{
-  
-  echo "<script>alert('Invalid Details');</script>";
+if (isset($_POST['login'])) {
+	$username = $_POST['username'];
+	$password = md5($_POST['password']);
+	$sql = "SELECT UserName,Password FROM tbladmin WHERE UserName=:username and Password=:password";
+	$query = $dbh->prepare($sql);
+	$query->bindParam(':username', $username, PDO::PARAM_STR);
+	$query->bindParam(':password', $password, PDO::PARAM_STR);
+	$query->execute();
+	$results = $query->fetchAll(PDO::FETCH_OBJ);
+	if ($query->rowCount() > 0) {
+		$_SESSION['alogin'] = $_POST['username'];
+		echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
+	} else {
 
-}
-
+		echo "<script>alert('Invalid Details');</script>";
+	}
 }
 
 ?>
@@ -34,7 +30,7 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>BloodBank & Donor Management System | Admin Login</title>
+	<title>Cibitoke Bloode donor management system | Admin Login</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
@@ -46,13 +42,13 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 </head>
 
 <body>
-	
+
 	<div class="login-page bk-img" style="background-image: url(img/banner.png);">
 		<div class="form-content">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold text-light mt-4x">BloodBank & Donor Management System Sign in</h1>
+						<h1 class="text-center text-bold text-light mt-4x">CIBITOKE BLOOD DONORS MANAGEMENT SYSTEM SIGN IN</h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 								<form method="post">
@@ -63,14 +59,14 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 									<label for="" class="text-uppercase text-sm">Password</label>
 									<input type="password" placeholder="Password" name="password" class="form-control mb">
 
-								
+
 
 									<button class="btn btn-primary btn-block" name="login" type="submit">LOGIN</button>
-<a href="forgot-password.php" >Forgot Password</a>
+									<a href="forgot-password.php">Forgot Password</a>
 								</form>
 								<div class="card-footer text-center" style="padding-top: 30px;">
-                                        <div class="small"><a href="../index.php" class="btn btn-primary">Back to Home</a></div>
-                                    </div>
+									<div class="small"><a href="../index.php" class="btn btn-primary">Back to Home</a></div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -78,7 +74,7 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Loading Scripts -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap-select.min.js"></script>
